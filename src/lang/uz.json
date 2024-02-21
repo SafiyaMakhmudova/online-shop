@@ -1,0 +1,47 @@
+{
+  "login": {
+    "phone": "Telefon raqamingizni kiriting",
+    "sms": "Biz sizga SMS orqali tasdiqlash kodini yuboramiz",
+    "signin": "Tizimga kirish",
+    "signup": "Ro'yxatdan o'tish",
+    "account": "Hisobingiz yo'qmi?",
+    "verifycode": "Tasdiqlash kodini kiriting",
+    "send": "Yuborish"
+  },
+  "appbar": {
+    "category": "Barcha toifalar",
+    "search": "Mahsulot qidirish...",
+    "button": "Sotuvchiga aylan",
+    "wishlist": "Istaklar roʻyxati",
+    "compare": "Taqqoslash",
+    "cart": "Savat",
+    "account": "Akkaunt",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "page": "Sahifalar",
+    "vender": "Sotuvchilar",
+    "support": "Qo'llab-quvvatlash markazi"
+  },
+  "empty": {
+    "emptyComp": "Hech narsa yo'q"
+  },
+  "dashboard": "Asosiy",
+  "category": "Kategoriya",
+  "products": "Mahsulotlar",
+  "orders": "Buyurtmalar",
+  "logout": "Chiqish",
+  "account":{
+    "info":"Ma'lumotlarim",
+    "fullName":"Ism familiya",
+    "phone":"Telefon raqam",
+    "btn":"Saqlash"
+  },
+  "adminAccount":{
+    "firstName":"Ism",
+    "lastName":"Familiya",
+    "phone":"Telefon raqam",
+    "email":"Elektron pochta",
+    "address":"Manzil",
+    "password":"Maxfiy so'z"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "login": {
+    "phone": "Enter your phone number",
+    "sms": "We will send you a confirmation code via SMS",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "account": "Don't have an account?",
+      "verifycode":"Enter confirmation code",
+        "send":"Send"
+  },
+  "appbar": {
+    "category": "All Category",
+    "search": "Search for product...",
+    "button": "Became Vendor",
+    "wishlist": "Wishlist",
+    "compare": "Compare",
+    "cart": "Cart",
+    "account": "Account",
+    "about": "About us",
+    "contact": "Contact",
+    "page": "Pages",
+    "vender": "Venders",
+    "support": "Support center"
+  },
+  "empty": {
+    "emptyComp": "There is nothing! "
+  },
+  "dashboard": "Dashboard",
+  "category": "Category",
+  "products": "Products",
+  "orders": "Orders",
+  "logout": "Logout",
+  "account":{
+    "info":"My information",
+    "fullName":"Full name",
+    "phone":"Phone number",
+    "btn":"Save"
+  },
+  "adminAccount":{
+    "firstName":"First name",
+    "lastName":"Last name",
+    "phone":"Phone number",
+    "email":"Email",
+    "address":"Address",
+    "password":"Password"
+  }
+}
