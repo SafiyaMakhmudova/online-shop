@@ -6,7 +6,7 @@
           <input
             class="outline-none border-x-white px-2 text-[16px]"
             type="text"
-            placeholder="Search..."
+            placeholder="Search by name..."
             v-model="nameInputValue.name"
           />
           <i
@@ -42,7 +42,7 @@ import { useAdminStore } from '@/features/admin/store/index';
 import oneAdmin from '@/features/admin/pages/oneAdmin.vue';
 
 import { useAdmin } from '@/features/admin/composables';
-const { showIcon, showPage,getOneAdmin  } = useAdmin();
+const { showIcon, showPage,fetchOneAdmin  } = useAdmin();
 
 let nameInputValue: {name:string} = reactive({
   name: ''
@@ -55,7 +55,8 @@ async function searchAdmin() {
     errorToast('Name field is empty');
   }
 
-  await getOneAdmin(nameInputValue);
+  await fetchOneAdmin(nameInputValue);
+  nameInputValue.name = '';
 }
 </script>
 

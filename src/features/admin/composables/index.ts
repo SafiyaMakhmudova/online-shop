@@ -3,8 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
 import { ref } from 'vue';
 import { deleteAdmin } from '@/api/admin';
-import { adminName } from '../../../modules/interfaces';
-
+import { onMounted } from 'vue';
 
 export const useAdmin = () => {
   const UpdateAdmin = ref(false);
@@ -13,8 +12,8 @@ export const useAdmin = () => {
   const router = useRouter();
   const route = useRoute();
 
-  const { loading, self_admin, showAdd, showIcon, admins } = storeToRefs(store);
-  const { signup, getAdmins, updateAdmin ,fetchOneAdmin } = useAdminStore();
+  const { loading, self_admin, showAdd, showIcon, admins, singleAdmin } = storeToRefs(store);
+  const { signup, getAdmins,fetchOneAdmin, fetchsingleAdmin, fetchUpdateAdmin, removeAdmin, fetchYourselfAdmin } = useAdminStore();
 
   function showPage() {
     showIcon.value = !showIcon.value;
@@ -26,24 +25,22 @@ export const useAdmin = () => {
     editingItemId.value = item.id;
   }
 
-  const allAdmins = async () => {
-    try {
-      await getAdmins();
-    } catch (error) {
-      console.log(error);
-      
-    }
-  };
+ 
+  onMounted(async() => {
+    await getAdmins()
+    
+  })
 
-  const getOneAdmin = async (name:adminName) =>{
-    try {
-      await fetchOneAdmin(name)
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  onMounted(async() => {
+    await fetchYourselfAdmin()
+    
+  })
+  
 
   return {
+    fetchsingleAdmin,
+    fetchOneAdmin,
+    singleAdmin,
     showIcon,
     showAdd,
     deleteAdmin,
@@ -51,12 +48,11 @@ export const useAdmin = () => {
     loading,
     self_admin,
     signup,
-    allAdmins,
     router,
     route,
     admins,
-    updateAdmin,
+    fetchUpdateAdmin,
     onShowUpdateAdmin,
-    getOneAdmin
+    removeAdmin,
   };
 };

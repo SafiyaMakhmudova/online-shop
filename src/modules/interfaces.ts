@@ -1,12 +1,12 @@
 export interface adminObj {
-  id?: string;
-  first_name: string;
-  last_name: string;
-  address: string;
-  password: string;
-  confirim_password: string;
-  email: string;
-  phone: string;
+  id?: number ;
+  first_name?: string;
+  last_name?: string;
+  address?: string;
+  password?: string;
+  confirim_password?: string;
+  email?: string;
+  phone?: string;
   is_superAdmin?: boolean;
   is_active?: boolean;
 }
@@ -52,12 +52,13 @@ export interface adminName{
 }
 
 export interface admin{
-  id: number;
+  id?: string;
   first_name: string;
   last_name: string;
-  email: string;
   address: string;
+  password: string;
+  email: string;
   phone: string;
-  is_active: boolean;
-
+  is_superAdmin?: boolean;
+  is_active?: boolean;
 }

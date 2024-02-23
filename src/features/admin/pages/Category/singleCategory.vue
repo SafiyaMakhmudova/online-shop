@@ -29,13 +29,11 @@
         <button @click="edited" class="">
           <i class="bx bx-edit-alt bx-md text-primary"></i>
         </button>
-        <button @click="deleted" class="ml-10">
+        <button @click="open" class="ml-10">
           
           <i class="bx bx-trash bx-md text-red-700"></i>
         </button>
-        <!-- <n-button  @click="handleButtonClick">
-
-        </n-button> -->
+        <DialogWrapper />
       </div>
 
       <div v-show="showUpdate" class="absolute bg-primary p-5 w-[50%] ml-[10%] mr-[10%] mt-[10%] rounded-xl">
@@ -62,7 +60,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useCategory } from '@/features/products/composables/useCategory';
-// import {  useDialog } from 'naive-ui'
+import { confirm } from '@/ts/dialog';
+import {DialogWrapper} from 'vue3-promise-dialog';
 
 import router from '@/router';
 import { adminRoute } from '@/constants/routes/admin';
@@ -70,26 +69,7 @@ import { updateCategory } from '@/features/products/modules/category';
 
 const { singleCategory, route, deleteCategory, updateCategory, fetchOneCategory } = useCategory();
 
-// const dialog = useDialog()
-
-// function handleButtonClick () {
-//         dialog.success({
-//           title: 'Close',
-//           content: 'Are you sure?',
-//           positiveText: 'Sure',
-//           negativeText: 'Not Sure',
-//           maskClosable: false,
-//           onMaskClick: () => {
-//             // message.success('cannot close')
-//           },
-//           onEsc: () => {
-//             // message.success('close by esc')
-//           }
-//         })
-//       }
-
 const showUpdate = ref(false);
-
 
 async function edited() {
   showUpdate.value = true;
@@ -112,7 +92,12 @@ const backList = async () => {
   router.push({ name: adminRoute.RT_CATEGORY });
 };
 
-async function deleted() {
-
+async function open() {
+  if (await confirm('Are you sure?')) {
+    const id = String(route.params.id)
+    await deleteCategory(id)
+  } else {
+    
+  }
 }
 </script>

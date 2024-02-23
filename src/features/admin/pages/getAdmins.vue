@@ -14,9 +14,10 @@
         <th class="text-[18px]">Status</th>
       </tr>
       <tr
-        class="border-y-[1px]"
+        class="border-y-[1px] cursor-pointer "
         v-for="(admin, index) in admins"
         :key="index"
+        @click="singlePage(admin?.id?.toString()?? '')" 
       >
         <td class="py-2 text-[15px]">{{ admin.id }}</td>
         <td class="text-[15px]">{{ admin.first_name }}</td>
@@ -38,13 +39,16 @@
   import { useAdmin } from '@/features/admin/composables/index.ts';
   import Loading from '@/components/loading.vue';
   import empty from '@/components/empty.vue';
-  import {onMounted} from "vue"
-  const { admins, loading, allAdmins, } = useAdmin();;
+  import {adminRoute} from '@/constants/routes/admin';
 
-  onMounted(async() => {
-    await allAdmins()
+  const { admins, loading,router } = useAdmin();;
+
+
+  async function singlePage(id:string) {
+   
+    await router.push({name:adminRoute.RT_SINGLE_ADMIN,params:{id}})
     
-  })
+}
 
 </script>
 

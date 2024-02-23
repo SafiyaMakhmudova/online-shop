@@ -73,6 +73,16 @@ export default [
       }
     },
     {
+      path:"/admin/:id",
+      name:adminRoute.RT_SINGLE_ADMIN,
+      component: () => import("@/features/admin/pages/oneAdmin.vue"),
+      meta:{
+        requiresAuth:true,
+        layout:Layouts.ADMIN,
+        title:adminRoute.MT_SINGLE_ADMIN
+      }
+    },
+    {
       path:"/admin/addProduct",
       name:adminRoute.RT_ADD_PRODUCT,
       component: () => import("@/features/admin/pages/addProduct.vue"),

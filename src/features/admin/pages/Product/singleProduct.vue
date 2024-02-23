@@ -36,7 +36,8 @@
                     </div>
                 </div>
                 <button @click="edited" class=""><i class='bx bx-edit-alt bx-md text-primary '></i></button>
-                <button @click="deleted" class="ml-10"><i class='bx bx-trash bx-md text-red-700'></i></button>
+                <button @click="open" class="ml-10"><i class='bx bx-trash bx-md text-red-700'></i></button>
+                <DialogWrapper />
             </div>
 
             <div v-show="showUpdate" class="absolute bg-primary p-5 w-[70%] ml-[10%] mr-[10%] mt-[10%] rounded-xl">
@@ -84,6 +85,9 @@ import router from "@/router";
 import { adminRoute } from "@/constants/routes/admin";
 import swiper from "./swiper.vue"
 
+import { confirm } from '@/ts/dialog';
+import {DialogWrapper} from 'vue3-promise-dialog';
+
 const { singleProduct, fetchOneProduct, route, deleteProduct, updateProduct } = useProduct()
 const showUpdate = ref(false)
 const id = ref()
@@ -128,8 +132,16 @@ async function saved() {
     await updateProduct({ id:id.value, name: singleProduct.value.name, description: singleProduct.value.description, total_count: singleProduct.value.total_count,price:singleProduct.value.price, mfg:singleProduct.value.mfg, life:singleProduct.value.life, qr_code:singleProduct.value.qr_code,value:singleProduct.value.value, brand:singleProduct.value.brand, unit_of_measure:singleProduct.value.unit_of_measure })
 }
 
-async function deleted() {
+
+
+async function open() {
+
+  if (await confirm('Are you sure?')) {
     const id = String(route.params.id)
     await deleteProduct(id)
+  } else {
+    
+  }
 }
+
 </script>

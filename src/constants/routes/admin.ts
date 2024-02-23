@@ -13,6 +13,8 @@ export  enum adminRoute {
     RT_SINGLE_PRODUCT = "single product",
     RT_SINGLE_CATEGORY = "single category",
     MT_SINGLE_CATEGORY = "single category",
+    RT_SINGLE_ADMIN = "single admin",
+    MT_SINGLE_ADMIN = "single admin",
     RT_ADD_PRODUCT = "add product",
     MT_ADD_PRODUCT = "add product",
     RT_ADD_CATEGORY = "add category",

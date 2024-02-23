@@ -74,7 +74,7 @@ import { useAdminStore } from '@/features/admin/store/index';
 
 const { authLogin } = useAdminStore();
 
-const email = ref('salima@mail.uz');
+const email = ref('salim@gmail.com');
 const password = ref('Uzbek1$t0n');
 
 const onSubmit = async () => {

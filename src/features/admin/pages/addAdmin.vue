@@ -101,12 +101,12 @@ const admin = ref<adminObj>({
 
 async function Submit() {
   if (
-    !admin.value.first_name ||
-    !admin.value.last_name ||
-    !admin.value.confirim_password ||
-    !admin.value.address ||
-    !admin.value.email ||
-    !admin.value.password ||
+    !admin.value.first_name &&
+    !admin.value.last_name &&
+    !admin.value.confirim_password &&
+    !admin.value.address &&
+    !admin.value.email &&
+    !admin.value.password &&
     !admin.value.phone 
   ) {
     warningToast("Will the blanks")
