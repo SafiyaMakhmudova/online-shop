@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
 import router from '@/router';
-import { create, updateByAdmin, apifetchAdmins, apiSearchAdmin, deleteAdmin , getOneAdmin, getOneYourself} from '@/api/admin';
+import { create, updateByAdmin, apifetchAdmins, apiSearchAdmin, deleteAdmin , getOneAdmin} from '@/api/admin';
 import { errorToast, successToast } from '@/utils/toast';
 // import router from '@/router/index';
 import { adminName, adminObj , admin} from '@/modules/interfaces';
+import {pagination} from '@/modules/types';
+
 import { login } from '@/api/auth';
 import { adminLogin } from '@/features/admin/modules';
 import { adminRoute } from '@/constants/routes/admin';
@@ -18,6 +20,10 @@ export const useAdminStore = defineStore('admin', {
     admins: adminObj[];
     admin: adminObj[] ;
     singleAdmin:admin;
+    meta:{
+      total:number
+    };
+
   } => {
     return {
       singleAdmin:{} as admin,
@@ -34,7 +40,10 @@ export const useAdminStore = defineStore('admin', {
       },
       admins: [],
       loading: false,
-      admin: []
+      admin: [],
+      meta:{
+        total:0
+      }
     };
   },
   actions: {
@@ -112,16 +121,17 @@ export const useAdminStore = defineStore('admin', {
       }
     },
 
-    async getAdmins() {
+    async getAdmins(pagination:pagination) {
       this.loading = true;
       try {
-        const res = await apifetchAdmins();
+        const res = await apifetchAdmins(pagination);
         if (res.status !== 200) {
           return;
         }
 
         this.loading = false;
-        this.admins = res.data;
+        this.admins = res.data?.limit_admins;
+        this.meta.total = res.data?.total;
       } catch (error) {
         this.loading = false;
         errorToast('Not Found!');

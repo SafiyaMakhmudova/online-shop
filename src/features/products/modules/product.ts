@@ -36,14 +36,14 @@ export interface productObj {
   unit_of_measure: string;
   value: string;
   brand: string;
-  category:[
+  category:
     {
       category_id : number,
       name: string,
       description:string,
       image: string
     }
-  ]
+  
   media: [
     {
       product_id: number;
@@ -53,7 +53,7 @@ export interface productObj {
 }
 
 export interface updateProduct {
-  id: string;
+  id: number | string;
   name: string;
   description: string;
   total_count: number;

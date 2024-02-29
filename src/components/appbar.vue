@@ -82,7 +82,7 @@ const productName = ref<searchProductObj>({
 
 
 async function handleSelect(key: number) {
-  const filteredProducts = productlist.value.filter(product => product.category_id === key);
+  const filteredProducts = productlist.value.filter(product => product?.category_id === key);
   productlist.value = filteredProducts;
 
 }

@@ -85,7 +85,7 @@ import baseInput from '@/components/base/base-input.vue';
 import baseButton from '@/components/base/base-button.vue';
 import { adminObj } from '@/modules/interfaces';
 import { useAdmin } from '@/features/admin/composables/index.ts';
-import { warningToast } from '@/utils/toast';
+import { errorToast, warningToast } from '@/utils/toast';
 const { loading, signup, showAdd, showPage } = useAdmin();
 
 
@@ -112,8 +112,10 @@ async function Submit() {
     warningToast("Will the blanks")
     return 
   }
+    
+  try{
     await signup(admin.value)
-
+    
     admin.value.first_name = ''
     admin.value.last_name = ''
     admin.value.confirim_password = ''
@@ -122,6 +124,11 @@ async function Submit() {
     admin.value.password = ''
     admin.value.phone = ''
 
+  }catch(error){
+    errorToast("Error")
+  }
+
+  
     
 }
 </script>

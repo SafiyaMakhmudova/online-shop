@@ -93,21 +93,6 @@ const showUpdate = ref(false)
 const id = ref()
 
 
-
-// const updated = reactive({
-//     id:String(route.params.id),
-//     name:singleProduct.value.name,
-//     description:"",
-//     total_count:1,
-//     price:"",
-//     mfg:"",
-//     life:"",
-//     qr_code:"",
-//     unit_of_measure:"",
-//     value:"",
-//     brand:"",
-// })
-
 onMounted(async () => {
     id.value = String(route.params.id)
     await fetchOneProduct(id.value)

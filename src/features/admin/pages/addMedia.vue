@@ -58,7 +58,7 @@
   
   
   const media = reactive<mediaObj>({
-    product_id:+(addedProoduct.value?.id),
+    product_id:addedProoduct.value.id,
     media_link: '',
   });
   

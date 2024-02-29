@@ -2,7 +2,7 @@
   <div v-if="loading">
     <Loading />
   </div>
-  <div v-else-if="admins.length != 0">
+  <div v-else-if="admins?.length != 0">
     <table class="w-full text-center">
       <tr class="border-y-[1px]">
         <th class="py-2 text-[18px]">ID</th>

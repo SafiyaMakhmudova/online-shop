@@ -21,7 +21,7 @@ const {productlist} = useProduct()
 const {categorylist}= useCategory()
 
 function clickKey(id:number| string | undefined){
-  const filteredProducts = productlist.value.filter(product => product.category_id === id);
+  const filteredProducts = productlist.value.filter(product => product?.category_id === id);
   productlist.value = filteredProducts;
   
 }

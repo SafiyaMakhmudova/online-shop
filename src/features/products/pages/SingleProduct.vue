@@ -1,16 +1,8 @@
 <template>
   <hr class="text-slate-200" />
   <div class="flex m-[80px] w-[100%]">
-    <div class="w-[28%]">
-      <div class="border border-slate-200 rounded-2xl">
-        <img class="w-[90%] mx-auto" :src="singleProduct[0]?.media?.media_link" alt="" />
-      </div>
-      <div class="flex w-[100%] mt-[15px] gap-1 justify-between">
-        <img class="w-[24%] border rounded-2xl border-slate-200" src="../../../assets/images/apple.webp" alt="" />
-        <img class="w-[24%] border rounded-2xl border-slate-200" src="../../../assets/images/apple.webp" alt="" />
-        <img class="w-[24%] border rounded-2xl border-slate-200" src="../../../assets/images/apple.webp" alt="" />
-        <img class="w-[24%] border rounded-2xl border-slate-200" src="../../../assets/images/apple.webp" alt="" />
-      </div>
+    <div class="w-[50%]">
+      <swiper/>
     </div>
     <div class="w-[30%] mx-[50px]">
       <div>
@@ -88,7 +80,7 @@
         <div class="w-[60%]">
           <div class="text-slate-500">SKU: <span class="text-primary">{{ singleProduct.qr_code }}</span></div>
           <div class="text-slate-500">
-            Category: <span class="text-primary">{{ singleProduct.category_id }}</span>
+            Category: <span class="text-primary">{{ singleProduct?.category?.name}}</span>
           </div>
         </div>
       </div>
@@ -99,8 +91,11 @@
 <script setup>
 import { useProductstore } from '@/features/products/store/productStore';
 import { useProduct } from "@/features/products/composables/products";
+import swiper from '@/features/admin/pages/Product/swiper.vue'
+
 const { singleProduct, fetchOneProduct, route } = useProduct();
 const productCart = useProductstore();
+
 const props = defineProps({
   data: Object
 });

@@ -2,7 +2,6 @@
     <div>
         <endNavbar/>
         <slider/>
-        <offerCard/>
         <productCard/> 
         <threeCard/>
         <productListMiddle/>
@@ -14,7 +13,6 @@
 import endNavbar from '@/components/end-navbar.vue'
 import slider from '@/components/slider.vue'
 import productCard from '@/features/products/components/card.vue';
-import offerCard from '@/features/products/components/offer-card.vue';
 import productListMiddle from "@/features/products/components/productlist-middle.vue"
 import threeCard from "@/features/products/components/top-three-card.vue"
 
