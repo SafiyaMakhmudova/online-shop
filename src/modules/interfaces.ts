@@ -1,5 +1,5 @@
 export interface adminObj {
-  id?: number ;
+  id?: number;
   first_name?: string;
   last_name?: string;
   address?: string;
@@ -11,10 +11,8 @@ export interface adminObj {
   is_active?: boolean;
 }
 
-
-
 export interface mediaObj {
-  product_id: number;
+  product_id?: number;
   media_link: string;
 }
 
@@ -27,31 +25,29 @@ export interface cartObj {
   price?: string;
 }
 
- export interface CartItem {
+export interface CartItem {
   id: string;
   price: string | number;
   count: number;
 }
-
 
 export interface searchProductObj {
   name?: string;
 }
 
 export interface CategoryMap {
-  id?:number | string | undefined;
-  name:string;
-  description:string;
-  image:any;
-  createdAt:any
+  id?: number | string | undefined;
+  name: string;
+  description: string;
+  image: any;
+  createdAt: any;
 }
 
-
-export interface adminName{
+export interface adminName {
   name: string;
 }
 
-export interface admin{
+export interface admin {
   id?: string;
   first_name: string;
   last_name: string;
@@ -62,3 +58,7 @@ export interface admin{
   is_superAdmin?: boolean;
   is_active?: boolean;
 }
+// export interface CartItem {
+//   id: number;
+//   // other properties
+// }
