@@ -12,12 +12,13 @@ export const useAdmin = () => {
   const router = useRouter();
   const route = useRoute();
 
-  
   const pagination = reactive({
     page: 1,
     pageSize: 10,
     skip: 0
   });
+
+  
 
   const { loading, self_admin, showAdd, showIcon, admins, singleAdmin, meta } = storeToRefs(store);
   const { signup, getAdmins,fetchOneAdmin, fetchsingleAdmin, fetchUpdateAdmin, removeAdmin, fetchYourselfAdmin } = useAdminStore();
@@ -34,9 +35,6 @@ export const useAdmin = () => {
     await getAdmins(pagination);
   }
 
-
-
-
   function showPage() {
     showIcon.value = !showIcon.value;
     showAdd.value = !showAdd.value;
@@ -46,6 +44,7 @@ export const useAdmin = () => {
     UpdateAdmin.value = true;
     editingItemId.value = item.id;
   }
+
 
  
   onMounted(async () => {

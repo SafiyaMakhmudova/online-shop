@@ -1,7 +1,8 @@
 <template>
   <div class="flex relative h-[600px]">
     <div class="p-2">
-      <button @click="backList" class="p-2 rounded-lg bg-orange text-white w-[60px] hover:bg-[#3BB77E] hover:text-black">
+      <button @click="backList"
+        class="p-2 rounded-lg bg-orange text-white w-[60px] hover:bg-[#3BB77E] hover:text-black">
         Back
       </button>
     </div>
@@ -30,17 +31,30 @@
           <i class="bx bx-edit-alt bx-md text-primary"></i>
         </button>
         <button @click="open" class="ml-10">
-          
+
           <i class="bx bx-trash bx-md text-red-700"></i>
         </button>
-        <DialogWrapper />
+        
+        <div v-if="dialog" class="border-2 rounded-sm text-center absolute  bg-zinc-300       top-[30%]">
+          <div class=" text-right p-0 text-2xl text-red-700 ">
+          </div>
+          <h2 class="text-xl  px-5 py-3">Are you sure?</h2>
+          <div class="flex justify-center text-lg gap-10 px-5 pb-4">
+            <button @click="remove">Yes</button>
+            <button @click="open">No</button>
+          </div>
+
+        </div>
       </div>
+      
+
 
       <div v-show="showUpdate" class="absolute bg-primary p-5 w-[50%] ml-[10%] mr-[10%] mt-[10%] rounded-xl">
         <div class="flex justify-between">
           <p class="text-lg">
             Category Name :
-            <input class="p-1 outline-none rounded-lg ml-2 mt-2" v-model="singleCategory.name" type="text" name="name" id="" />
+            <input class="p-1 outline-none rounded-lg ml-2 mt-2" v-model="singleCategory.name" type="text" name="name"
+              id="" />
           </p>
           <i @click="canceled" class="bx bx-x bx-black bx-lg hover:bg-red-600 rounded-lg"></i>
         </div>
@@ -60,8 +74,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useCategory } from '@/features/products/composables/useCategory';
-import { confirm } from '@/ts/dialog';
-import {DialogWrapper} from 'vue3-promise-dialog';
 
 import router from '@/router';
 import { adminRoute } from '@/constants/routes/admin';
@@ -69,7 +81,8 @@ import { updateCategory } from '@/features/products/modules/category';
 
 const { singleCategory, route, deleteCategory, updateCategory, fetchOneCategory } = useCategory();
 
-const showUpdate = ref(false);
+const showUpdate = ref<boolean>(false);
+const dialog = ref<boolean>(false);
 
 async function edited() {
   showUpdate.value = true;
@@ -93,11 +106,14 @@ const backList = async () => {
 };
 
 async function open() {
-  if (await confirm('Are you sure?')) {
+  dialog.value = !dialog.value
+}
+
+async function remove() {
     const id = String(route.params.id)
     await deleteCategory(id)
-  } else {
-    
-  }
+    dialog.value = !dialog.value
 }
+
+
 </script>

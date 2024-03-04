@@ -6,7 +6,7 @@
     >
       <div class="logo flex justify-center">
         <img
-          src="./assets/img/logo (1).svg"
+          src="../assets/images/icon-1.png "
           class="w-[40%]"
           alt=""
           srcset=""
@@ -63,7 +63,7 @@
     >
       <div class="logo flex justify-center">
         <img
-          src="./assets/img/logo (1).svg"
+          src="../assets/images/icon-1.png"
           class="w-[40%]"
           alt=""
           srcset=""
